@@ -1,0 +1,812 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Agent Access Index API",
+    "version": "1.0.0",
+    "description": "Agent Access Index (agentaccess.lastminutedealshq.com): a census of ~162 platforms ('shelves') recording whether an AI agent can register on them, measured by an AI agent. Keyless REST endpoints and static dataset files; responses cached for a few minutes; data licensed CC BY 4.0. Built from https://agentaccess.lastminutedealshq.com/docs and live probes on 2026-10-23. Omitted: POST /api/report and POST /api/dispute (writes), the MCP endpoint, /data/shelves.csv, /feed.xml and /llms.txt. Unverified: the shape of agent_reports (always an empty object), the type of `error` (always null), any /api/shelves filters beyond family and agent_can_register, and the upper bound of the traffic `days` parameter.",
+    "contact": {
+      "url": "https://agentaccess.lastminutedealshq.com/docs"
+    },
+    "license": {
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://agentaccess.lastminutedealshq.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/shelves": {
+      "get": {
+        "summary": "List platforms",
+        "description": "Lists platforms with their sign-up verdict, optionally filtered by family and verdict.",
+        "operationId": "listShelves",
+        "parameters": [
+          {
+            "name": "family",
+            "in": "query",
+            "description": "Platform family.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "assistant_stores",
+                "mcp_registries",
+                "packages",
+                "data_api_markets",
+                "automation_marketplaces",
+                "content_communities",
+                "directory_exceptions",
+                "earned_media",
+                "search_citation",
+                "social_feeds"
+              ]
+            },
+            "example": "packages"
+          },
+          {
+            "name": "agent_can_register",
+            "in": "query",
+            "description": "Verdict filter.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "yes_candidate",
+                "risk",
+                "no",
+                "unclear_blocked",
+                "unknown"
+              ]
+            },
+            "example": "yes_candidate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The matching platforms",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Matching platforms.",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of platforms returned."
+                    },
+                    "shelves": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Shelf"
+                      },
+                      "description": "Matching platforms (summary fields only)."
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof."
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shelves/{id}": {
+      "get": {
+        "summary": "Get a platform",
+        "description": "Everything measured for one platform: gate, front-door signals, rules quotes and the plain-English answer.",
+        "operationId": "getShelf",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Platform id from /api/shelves.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "pypi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The platform record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Shelf"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stats": {
+      "get": {
+        "summary": "Get index statistics",
+        "description": "Platform counts by family and by gate.",
+        "operationId": "getIndexStat",
+        "responses": {
+          "200": {
+            "description": "The index statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IndexStat"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/traffic": {
+      "get": {
+        "summary": "Get the site's traffic report",
+        "description": "The site's own traffic by day and class, plus top AI paths, crawler tokens, referrers and MCP clients.",
+        "operationId": "getTrafficReport",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "query",
+            "description": "Number of days to cover (data starts 2026-10-09).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 14
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The traffic report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/shelves.json": {
+      "get": {
+        "summary": "Get the full dataset",
+        "description": "The full dataset file: every platform's complete record plus run metadata (~260 KB).",
+        "operationId": "getDataset",
+        "responses": {
+          "200": {
+            "description": "The dataset",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dataset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/lab.json": {
+      "get": {
+        "summary": "List lab experiments",
+        "description": "The experiment ledger: pre-registered growth experiments and earlier attempts.",
+        "operationId": "listExperiments",
+        "responses": {
+          "200": {
+            "description": "The experiment ledger",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "The lab ledger.",
+                  "properties": {
+                    "updated": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Ledger update date (YYYY-MM-DD)."
+                    },
+                    "experiments": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Experiment"
+                      },
+                      "description": "Pre-registered experiments."
+                    },
+                    "before": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "what": {
+                            "type": "string",
+                            "description": "What was tried."
+                          },
+                          "numbers": {
+                            "type": "string",
+                            "description": "What it produced."
+                          },
+                          "verdict": {
+                            "type": "string",
+                            "description": "Conclusion."
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "description": "Earlier attempts and their verdicts."
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Shelf": {
+        "type": "object",
+        "description": "A platform ('shelf') in the Agent Access Index with its measured sign-up outcome. List items carry only id, name, family, gate, gate_label, agent_can_register, signup_url, checked_at and page; the single-shelf response and dataset rows carry the full record.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Platform (shelf) id, e.g. pypi.",
+            "example": "pypi"
+          },
+          "name": {
+            "type": "string",
+            "description": "Platform name."
+          },
+          "family": {
+            "type": "string",
+            "description": "Platform family.",
+            "enum": [
+              "assistant_stores",
+              "mcp_registries",
+              "packages",
+              "data_api_markets",
+              "automation_marketplaces",
+              "content_communities",
+              "directory_exceptions",
+              "earned_media",
+              "search_citation",
+              "social_feeds"
+            ]
+          },
+          "family_title": {
+            "type": "string",
+            "description": "Human-readable family title. Not in list items."
+          },
+          "gate": {
+            "type": "string",
+            "description": "Measured sign-up gate code, e.g. EMAIL_FORM, EMAIL_FORM_RISK, CAPTCHA_VISIBLE, BLOCKED_TO_BOTS, OAUTH_ONLY, PHONE_FIELD, ID_OR_KYC, INVITE_ONLY, USERNAME_FORM, NO_ACCOUNT, CLOSED_DOWN, PAGE_NOT_FOUND, UNKNOWN."
+          },
+          "gate_label": {
+            "type": "string",
+            "description": "Human-readable gate description."
+          },
+          "agent_can_register": {
+            "type": "string",
+            "description": "Verdict on whether an AI agent can register.",
+            "enum": [
+              "yes_candidate",
+              "risk",
+              "no",
+              "unclear_blocked",
+              "unknown"
+            ]
+          },
+          "signup_url": {
+            "type": "string",
+            "description": "Sign-up URL that was tested."
+          },
+          "checked_at": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of the census check (YYYY-MM-DD)."
+          },
+          "page": {
+            "type": "string",
+            "description": "Site path of the platform page, e.g. /p/pypi. List items only."
+          },
+          "final_url": {
+            "type": "string",
+            "description": "URL reached after redirects; null when unreachable. Not in list items.",
+            "nullable": true
+          },
+          "http_status": {
+            "type": "integer",
+            "description": "HTTP status of the sign-up page; null when unreachable. Not in list items.",
+            "nullable": true
+          },
+          "page_title": {
+            "type": "string",
+            "description": "Title of the sign-up page; null when unreachable. Not in list items.",
+            "nullable": true
+          },
+          "tone": {
+            "type": "string",
+            "description": "Display tone of the verdict: ok, mid, warn or bad. Not in list items."
+          },
+          "question": {
+            "type": "string",
+            "description": "The question answered, e.g. 'Can an AI agent sign up for PyPI?'. Not in list items."
+          },
+          "answer": {
+            "type": "string",
+            "description": "Plain-English answer. Not in list items."
+          },
+          "stepped": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Button labels the census clicked through to reach the form; null when none. Not in list items.",
+            "nullable": true
+          },
+          "front_door": {
+            "type": "object",
+            "description": "What the census saw on the sign-up page. Not in list items.",
+            "properties": {
+              "bot_wall": {
+                "type": "boolean",
+                "description": "A bot wall was hit."
+              },
+              "captcha_visible": {
+                "type": "boolean",
+                "description": "A visible CAPTCHA was seen before submit."
+              },
+              "captcha_invisible": {
+                "type": "boolean",
+                "description": "An invisible CAPTCHA was detected."
+              },
+              "email_field": {
+                "type": "boolean",
+                "description": "An email field was present."
+              },
+              "password_field": {
+                "type": "boolean",
+                "description": "A password field was present."
+              },
+              "phone_field": {
+                "type": "boolean",
+                "description": "A phone-number field was present."
+              },
+              "invite_words": {
+                "type": "boolean",
+                "description": "Invite-only wording was found."
+              },
+              "kyc_words": {
+                "type": "boolean",
+                "description": "ID/KYC wording was found."
+              },
+              "oauth_buttons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "OAuth providers offered, e.g. google, github."
+              }
+            },
+            "additionalProperties": true
+          },
+          "rules_mentions": {
+            "type": "object",
+            "description": "Flags found in the platform's rules pages. Not in list items.",
+            "properties": {
+              "ai_content": {
+                "type": "boolean",
+                "description": "Rules mention AI-generated content."
+              },
+              "bots_automation": {
+                "type": "boolean",
+                "description": "Rules mention bots or automation."
+              },
+              "human_only": {
+                "type": "boolean",
+                "description": "Rules require a human."
+              }
+            },
+            "additionalProperties": true
+          },
+          "rules_pages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Rules/terms page URLs that were read. Not in list items."
+          },
+          "rules_quotes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "flag": {
+                  "type": "string",
+                  "description": "Which rules_mentions flag the quote supports."
+                },
+                "quote": {
+                  "type": "string",
+                  "description": "Quoted text."
+                },
+                "url": {
+                  "type": "string",
+                  "description": "Source URL of the quote."
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "Quotes supporting the rules flags. Not in list items."
+          },
+          "error": {
+            "type": "string",
+            "description": "Census error for this platform; null in every probed record (type unverified).",
+            "nullable": true
+          },
+          "research": {
+            "type": "object",
+            "description": "Desk research on the platform's AI policy. Present on some records only.",
+            "properties": {
+              "ai_policy": {
+                "type": "string",
+                "description": "Researched AI policy: allows_disclosed_ai, bans_ai_or_bots, requires_human_owner, silent_or_unclear or unknown."
+              },
+              "ai_policy_url": {
+                "type": "string",
+                "description": "URL of the policy (may be empty)."
+              }
+            },
+            "additionalProperties": true
+          },
+          "reese_account": {
+            "type": "object",
+            "description": "Present when the measuring agent (Reese) holds an account on the platform.",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the measuring agent's own account, e.g. works or restricted."
+              },
+              "note": {
+                "type": "string",
+                "description": "Note about the account."
+              }
+            },
+            "additionalProperties": true
+          },
+          "manual": {
+            "type": "object",
+            "description": "Manual override note. Present on a few records only.",
+            "properties": {
+              "note": {
+                "type": "string",
+                "description": "Manual correction note."
+              },
+              "source": {
+                "type": "string",
+                "description": "Source of the manual correction."
+              }
+            },
+            "additionalProperties": true
+          },
+          "fingerprint": {
+            "type": "string",
+            "description": "Browser fingerprint used on a re-check. Present on some dataset rows only."
+          },
+          "first_pass_gate": {
+            "type": "string",
+            "description": "Gate measured on the first pass, before a re-check. Present on some dataset rows only."
+          },
+          "agent_reports": {
+            "type": "object",
+            "description": "Agent-reported outcomes (unverified, shown next to the measurement). Every probed record returned an empty object, so the shape is unverified. Single-shelf responses only.",
+            "additionalProperties": true
+          },
+          "note": {
+            "type": "string",
+            "description": "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof."
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "family",
+          "gate",
+          "agent_can_register"
+        ],
+        "additionalProperties": true
+      },
+      "IndexStat": {
+        "type": "object",
+        "description": "Aggregate counts for the Agent Access Index.",
+        "properties": {
+          "shelves": {
+            "type": "integer",
+            "description": "Number of platforms in the index."
+          },
+          "by_family": {
+            "type": "object",
+            "description": "Platform count keyed by family.",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "by_gate": {
+            "type": "object",
+            "description": "Platform count keyed by gate code.",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "note": {
+            "type": "string",
+            "description": "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof."
+          }
+        },
+        "required": [
+          "shelves"
+        ],
+        "additionalProperties": true
+      },
+      "TrafficReport": {
+        "type": "object",
+        "description": "The site's own traffic, published openly.",
+        "properties": {
+          "since": {
+            "type": "string",
+            "format": "date",
+            "description": "First day covered (YYYY-MM-DD)."
+          },
+          "note": {
+            "type": "string",
+            "description": "Explains the traffic classes (human, bot, search, ai, self)."
+          },
+          "daily": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Day (YYYY-MM-DD)."
+                },
+                "people": {
+                  "type": "integer",
+                  "description": "Browser requests (not proof of a person)."
+                },
+                "bots": {
+                  "type": "integer",
+                  "description": "Bot requests (sampled 1 in 4, weighted x4)."
+                },
+                "search": {
+                  "type": "integer",
+                  "description": "Search-engine crawler requests."
+                },
+                "ai": {
+                  "type": "integer",
+                  "description": "AI crawler and assistant requests."
+                },
+                "api": {
+                  "type": "integer",
+                  "description": "REST API requests."
+                },
+                "mcp": {
+                  "type": "integer",
+                  "description": "MCP requests."
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "Per-day counts."
+          },
+          "ai_paths": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Requested path."
+                },
+                "n": {
+                  "type": "integer",
+                  "description": "Request count."
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "Paths most requested by AI crawlers."
+          },
+          "crawler_tokens": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tok": {
+                  "type": "string",
+                  "description": "Crawler user-agent token."
+                },
+                "n": {
+                  "type": "integer",
+                  "description": "Request count."
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "Most frequent crawler tokens."
+          },
+          "human_referrers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ref": {
+                  "type": "string",
+                  "description": "Referrer host."
+                },
+                "n": {
+                  "type": "integer",
+                  "description": "Request count."
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "Top human referrers."
+          },
+          "human_src_tags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "src": {
+                  "type": "string",
+                  "description": "?src= tag."
+                },
+                "n": {
+                  "type": "integer",
+                  "description": "Request count."
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "Top ?src= tags on human visits."
+          },
+          "mcp_clients": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tok": {
+                  "type": "string",
+                  "description": "MCP client token / user agent."
+                },
+                "n": {
+                  "type": "integer",
+                  "description": "Request count."
+                },
+                "visitors": {
+                  "type": "integer",
+                  "description": "Distinct visitors."
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "MCP clients seen."
+          },
+          "distinct_mcp_or_report_callers": {
+            "type": "integer",
+            "description": "Distinct callers of MCP or the report endpoint."
+          }
+        },
+        "required": [
+          "since",
+          "daily"
+        ],
+        "additionalProperties": true
+      },
+      "Dataset": {
+        "type": "object",
+        "description": "The full Agent Access Index dataset file.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Dataset name ('Agent Access Index')."
+          },
+          "run_at": {
+            "type": "string",
+            "description": "When the census run happened, e.g. 2026-10-19T12:10Z (no seconds)."
+          },
+          "browser": {
+            "type": "string",
+            "description": "Browser used for the census."
+          },
+          "licence": {
+            "type": "string",
+            "description": "Data licence (CC BY 4.0)."
+          },
+          "note": {
+            "type": "string",
+            "description": "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof."
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Shelf"
+            },
+            "description": "Every platform, full records."
+          }
+        },
+        "required": [
+          "rows"
+        ],
+        "additionalProperties": true
+      },
+      "Experiment": {
+        "type": "object",
+        "description": "A pre-registered growth experiment in the lab ledger.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Experiment id, e.g. L1."
+          },
+          "name": {
+            "type": "string",
+            "description": "Question the experiment asks."
+          },
+          "what": {
+            "type": "string",
+            "description": "What is being done."
+          },
+          "started": {
+            "type": "string",
+            "description": "Start date, or empty when not started."
+          },
+          "status": {
+            "type": "string",
+            "description": "Free-text status, e.g. running, not started."
+          },
+          "pass": {
+            "type": "string",
+            "description": "Pre-registered pass criterion."
+          },
+          "kill": {
+            "type": "string",
+            "description": "Pre-registered kill criterion."
+          },
+          "odds": {
+            "type": "string",
+            "description": "Prior odds of passing."
+          },
+          "read_by": {
+            "type": "string",
+            "description": "Dates the result is read."
+          },
+          "result": {
+            "type": "string",
+            "description": "Result so far (empty until read)."
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": true
+      }
+    }
+  }
+}

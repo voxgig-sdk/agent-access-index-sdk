@@ -1,0 +1,44 @@
+# BasicShelfFlow
+
+main: kit: flow: BasicShelfFlow:
+{
+  entity: "shelf",
+  kind: "basic",
+  name: "BasicShelfFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "shelf_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "shelf_ref01",
+        srcdatavar: "shelf_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "shelf01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-shelf_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicShelfFlow"
+}

@@ -1,0 +1,28 @@
+# BasicIndexStatFlow
+
+main: kit: flow: BasicIndexStatFlow:
+{
+  entity: "index_stat",
+  kind: "basic",
+  name: "BasicIndexStatFlow",
+  step: [
+    {
+      i: {
+        ref: "index_stat_ref01",
+        srcdatavar: "index_stat_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-index_stat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIndexStatFlow"
+}

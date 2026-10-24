@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "index_stat": {
+      "INDEX_STAT00": {
+        "by_family": {},
+        "by_gate": {},
+        "note": "s2a",
+        "shelves": 43,
+        "id": "INDEX_STAT00"
+      },
+      "INDEX_STAT01": {
+        "by_family": {},
+        "by_gate": {},
+        "note": "s52",
+        "shelves": 83,
+        "id": "INDEX_STAT01"
+      },
+      "INDEX_STAT02": {
+        "by_family": {},
+        "by_gate": {},
+        "note": "s7a",
+        "shelves": 123,
+        "id": "INDEX_STAT02"
+      }
+    }
+  },
+  "new": {
+    "index_stat": {
+      "index_stat_ref01": {
+        "by_family": {},
+        "by_gate": {},
+        "note": "sa2",
+        "shelves": 163
+      }
+    }
+  },
+  "requests": {
+    "GET /api/stats": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

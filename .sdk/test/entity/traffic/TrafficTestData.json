@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "traffic": {
+      "TRAFFIC00": {
+        "ai_paths": [],
+        "crawler_tokens": [],
+        "daily": [],
+        "distinct_mcp_or_report_callers": 93,
+        "human_referrers": [],
+        "human_src_tags": [],
+        "mcp_clients": [],
+        "note": "s61",
+        "since": "s62"
+      },
+      "TRAFFIC01": {
+        "ai_paths": [],
+        "crawler_tokens": [],
+        "daily": [],
+        "distinct_mcp_or_report_callers": 183,
+        "human_referrers": [],
+        "human_src_tags": [],
+        "mcp_clients": [],
+        "note": "sbb",
+        "since": "sbc"
+      },
+      "TRAFFIC02": {
+        "ai_paths": [],
+        "crawler_tokens": [],
+        "daily": [],
+        "distinct_mcp_or_report_callers": 273,
+        "human_referrers": [],
+        "human_src_tags": [],
+        "mcp_clients": [],
+        "note": "s115",
+        "since": "s116"
+      }
+    }
+  },
+  "new": {
+    "traffic": {
+      "traffic_ref01": {
+        "ai_paths": [],
+        "crawler_tokens": [],
+        "daily": [],
+        "distinct_mcp_or_report_callers": 363,
+        "human_referrers": [],
+        "human_src_tags": [],
+        "mcp_clients": [],
+        "note": "s16f",
+        "since": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/traffic": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

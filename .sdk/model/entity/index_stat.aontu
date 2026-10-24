@@ -1,0 +1,74 @@
+# Entity: index_stat
+
+main: kit: entity: index_stat: {
+
+  alias: field: {}
+
+  fields: {
+    by_family: {
+      h: "By Family"
+      n: "by_family"
+      r: false
+      sh: "Platform count keyed by family."
+      t: "`$OBJECT`"
+    }
+    by_gate: {
+      h: "By Gate"
+      n: "by_gate"
+      r: false
+      sh: "Platform count keyed by gate code."
+      t: "`$OBJECT`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: false
+      sh: "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof."
+      t: "`$STRING`"
+    }
+    shelves: {
+      h: "Shelves"
+      n: "shelves"
+      r: true
+      sh: "Number of platforms in the index."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "index_stat"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/stats"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/stats"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "stats"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

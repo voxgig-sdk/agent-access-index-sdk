@@ -1,0 +1,72 @@
+<?php
+declare(strict_types=1);
+
+// AgentAccessIndex SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+AgentAccessIndexUtility::setRegistrar(function (AgentAccessIndexUtility $u): void {
+    $u->clean = [AgentAccessIndexClean::class, 'call'];
+    $u->clean_add = [AgentAccessIndexClean::class, 'add'];
+    $u->clean_explain = [AgentAccessIndexDone::class, 'clean_explain'];
+    $u->done = [AgentAccessIndexDone::class, 'call'];
+    $u->make_error = [AgentAccessIndexMakeError::class, 'call'];
+    $u->feature_add = [AgentAccessIndexFeatureAdd::class, 'call'];
+    $u->feature_hook = [AgentAccessIndexFeatureHook::class, 'call'];
+    $u->feature_init = [AgentAccessIndexFeatureInit::class, 'call'];
+    $u->fetcher = [AgentAccessIndexFetcher::class, 'call'];
+    $u->make_fetch_def = [AgentAccessIndexMakeFetchDef::class, 'call'];
+    $u->make_context = [AgentAccessIndexMakeContext::class, 'call'];
+    $u->make_options = [AgentAccessIndexMakeOptions::class, 'call'];
+    $u->make_request = [AgentAccessIndexMakeRequest::class, 'call'];
+    $u->make_response = [AgentAccessIndexMakeResponse::class, 'call'];
+    $u->make_result = [AgentAccessIndexMakeResult::class, 'call'];
+    $u->make_point = [AgentAccessIndexMakePoint::class, 'call'];
+    $u->make_spec = [AgentAccessIndexMakeSpec::class, 'call'];
+    $u->make_url = [AgentAccessIndexMakeUrl::class, 'call'];
+    $u->param = [AgentAccessIndexParam::class, 'call'];
+    $u->prepare_auth = [AgentAccessIndexPrepareAuth::class, 'call'];
+    $u->prepare_body = [AgentAccessIndexPrepareBody::class, 'call'];
+    $u->prepare_headers = [AgentAccessIndexPrepareHeaders::class, 'call'];
+    $u->prepare_method = [AgentAccessIndexPrepareMethod::class, 'call'];
+    $u->prepare_params = [AgentAccessIndexPrepareParams::class, 'call'];
+    $u->prepare_path = [AgentAccessIndexPreparePath::class, 'call'];
+    $u->prepare_query = [AgentAccessIndexPrepareQuery::class, 'call'];
+    $u->graphql_body = [AgentAccessIndexGraphql::class, 'body'];
+    $u->graphql_errors = [AgentAccessIndexGraphql::class, 'errors'];
+    $u->result_basic = [AgentAccessIndexResultBasic::class, 'call'];
+    $u->result_body = [AgentAccessIndexResultBody::class, 'call'];
+    $u->result_headers = [AgentAccessIndexResultHeaders::class, 'call'];
+    $u->transform_request = [AgentAccessIndexTransformRequest::class, 'call'];
+    $u->transform_response = [AgentAccessIndexTransformResponse::class, 'call'];
+});

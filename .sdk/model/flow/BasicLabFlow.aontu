@@ -1,0 +1,22 @@
+# BasicLabFlow
+
+main: kit: flow: BasicLabFlow:
+{
+  entity: "lab",
+  kind: "basic",
+  name: "BasicLabFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "lab_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLabFlow"
+}

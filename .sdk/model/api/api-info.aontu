@@ -1,0 +1,29 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://agentaccess.lastminutedealshq.com/docs"
+      }
+      description: "Agent Access Index (agentaccess.lastminutedealshq.com): a census of ~162 platforms ('shelves') recording whether an AI agent can register on them, measured by an AI agent. Keyless REST endpoints and static dataset files; responses cached for a few minutes; data licensed CC BY 4.0. Built from https://agentaccess.lastminutedealshq.com/docs and live probes on 2026-10-23. Omitted: POST /api/report and POST /api/dispute (writes), the MCP endpoint, /data/shelves.csv, /feed.xml and /llms.txt. Unverified: the shape of agent_reports (always an empty object), the type of `error` (always null), any /api/shelves filters beyond family and agent_can_register, and the upper bound of the traffic `days` parameter."
+      license: {
+        name: "CC BY 4.0"
+        url: "https://creativecommons.org/licenses/by/4.0/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://agentaccess.lastminutedealshq.com"
+        }
+      ]
+      summary: "Agent Access Index (agentaccess.lastminutedealshq.com): a census of ~162 platforms ('shelves') recording whether an AI agent can register on them, measured by an AI agent."
+      title: "Agent Access Index API"
+      version: "1.0.0"
+      website: "https://agentaccess.lastminutedealshq.com"
+    }
+  }
+}
+

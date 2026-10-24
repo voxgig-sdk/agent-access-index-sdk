@@ -1,0 +1,22 @@
+# BasicDatasetFlow
+
+main: kit: flow: BasicDatasetFlow:
+{
+  entity: "dataset",
+  kind: "basic",
+  name: "BasicDatasetFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dataset_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDatasetFlow"
+}

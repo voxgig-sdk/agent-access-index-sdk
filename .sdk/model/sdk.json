@@ -1,0 +1,2316 @@
+{
+  "def": "agent-access-index_0.1.0.json",
+  "main": {
+    "def": {
+      "desc": ""
+    },
+    "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
+      "config": {
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ],
+        "headers": {
+          "content-type": "application/json"
+        },
+        "repr": "auto"
+      },
+      "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
+      "entity": {
+        "dataset": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "agent_can_register": {
+              "a": true,
+              "h": "Agent Can Register",
+              "n": "agent_can_register",
+              "r": true,
+              "sh": "Verdict on whether an AI agent can register.",
+              "t": "`$STRING`"
+            },
+            "agent_reports": {
+              "a": true,
+              "h": "Agent Reports",
+              "n": "agent_reports",
+              "r": false,
+              "sh": "Agent-reported outcomes (unverified, shown next to the measurement).",
+              "t": "`$OBJECT`"
+            },
+            "answer": {
+              "a": true,
+              "h": "Answer",
+              "n": "answer",
+              "r": false,
+              "sh": "Plain-English answer.",
+              "t": "`$STRING`"
+            },
+            "checked_at": {
+              "a": true,
+              "fo": "date",
+              "h": "Checked At",
+              "n": "checked_at",
+              "r": false,
+              "sh": "Date of the census check (YYYY-MM-DD).",
+              "t": "`$STRING`"
+            },
+            "error": {
+              "a": true,
+              "h": "Error",
+              "n": "error",
+              "r": false,
+              "sh": "Census error for this platform; null in every probed record (type unverified).",
+              "t": "`$STRING`"
+            },
+            "family": {
+              "a": true,
+              "h": "Family",
+              "n": "family",
+              "r": true,
+              "sh": "Platform family.",
+              "t": "`$STRING`"
+            },
+            "family_title": {
+              "a": true,
+              "h": "Family Title",
+              "n": "family_title",
+              "r": false,
+              "sh": "Human-readable family title.",
+              "t": "`$STRING`"
+            },
+            "final_url": {
+              "a": true,
+              "h": "Final Url",
+              "n": "final_url",
+              "r": false,
+              "sh": "URL reached after redirects; null when unreachable.",
+              "t": "`$STRING`"
+            },
+            "fingerprint": {
+              "a": true,
+              "h": "Fingerprint",
+              "n": "fingerprint",
+              "r": false,
+              "sh": "Browser fingerprint used on a re-check.",
+              "t": "`$STRING`"
+            },
+            "first_pass_gate": {
+              "a": true,
+              "h": "First Pass Gate",
+              "n": "first_pass_gate",
+              "r": false,
+              "sh": "Gate measured on the first pass, before a re-check.",
+              "t": "`$STRING`"
+            },
+            "front_door": {
+              "a": true,
+              "h": "Front Door",
+              "n": "front_door",
+              "r": false,
+              "sh": "What the census saw on the sign-up page.",
+              "t": "`$OBJECT`"
+            },
+            "gate": {
+              "a": true,
+              "h": "Gate",
+              "n": "gate",
+              "r": true,
+              "sh": "Measured sign-up gate code, e.g.",
+              "t": "`$STRING`"
+            },
+            "gate_label": {
+              "a": true,
+              "h": "Gate Label",
+              "n": "gate_label",
+              "r": false,
+              "sh": "Human-readable gate description.",
+              "t": "`$STRING`"
+            },
+            "http_status": {
+              "a": true,
+              "h": "Http Status",
+              "n": "http_status",
+              "r": false,
+              "sh": "HTTP status of the sign-up page; null when unreachable.",
+              "t": "`$INTEGER`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Platform (shelf) id, e.g.",
+              "t": "`$STRING`"
+            },
+            "manual": {
+              "a": true,
+              "h": "Manual",
+              "n": "manual",
+              "r": false,
+              "sh": "Manual override note.",
+              "t": "`$OBJECT`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Platform name.",
+              "t": "`$STRING`"
+            },
+            "note": {
+              "a": true,
+              "h": "Note",
+              "n": "note",
+              "r": false,
+              "sh": "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof.",
+              "t": "`$STRING`"
+            },
+            "page": {
+              "a": true,
+              "h": "Page",
+              "n": "page",
+              "r": false,
+              "sh": "Site path of the platform page, e.g.",
+              "t": "`$STRING`"
+            },
+            "page_title": {
+              "a": true,
+              "h": "Page Title",
+              "n": "page_title",
+              "r": false,
+              "sh": "Title of the sign-up page; null when unreachable.",
+              "t": "`$STRING`"
+            },
+            "question": {
+              "a": true,
+              "h": "Question",
+              "n": "question",
+              "r": false,
+              "sh": "The question answered, e.g.",
+              "t": "`$STRING`"
+            },
+            "reese_account": {
+              "a": true,
+              "h": "Reese Account",
+              "n": "reese_account",
+              "r": false,
+              "sh": "Present when the measuring agent (Reese) holds an account on the platform.",
+              "t": "`$OBJECT`"
+            },
+            "research": {
+              "a": true,
+              "h": "Research",
+              "n": "research",
+              "r": false,
+              "sh": "Desk research on the platform's AI policy.",
+              "t": "`$OBJECT`"
+            },
+            "rules_mentions": {
+              "a": true,
+              "h": "Rules Mentions",
+              "n": "rules_mentions",
+              "r": false,
+              "sh": "Flags found in the platform's rules pages.",
+              "t": "`$OBJECT`"
+            },
+            "rules_pages": {
+              "a": true,
+              "h": "Rules Pages",
+              "n": "rules_pages",
+              "r": false,
+              "sh": "Rules/terms page URLs that were read.",
+              "t": "`$ARRAY`"
+            },
+            "rules_quotes": {
+              "a": true,
+              "h": "Rules Quotes",
+              "n": "rules_quotes",
+              "r": false,
+              "sh": "Quotes supporting the rules flags.",
+              "t": "`$ARRAY`"
+            },
+            "signup_url": {
+              "a": true,
+              "h": "Signup Url",
+              "n": "signup_url",
+              "r": false,
+              "sh": "Sign-up URL that was tested.",
+              "t": "`$STRING`"
+            },
+            "stepped": {
+              "a": true,
+              "h": "Stepped",
+              "n": "stepped",
+              "r": false,
+              "sh": "Button labels the census clicked through to reach the form; null when none.",
+              "t": "`$ARRAY`"
+            },
+            "tone": {
+              "a": true,
+              "h": "Tone",
+              "n": "tone",
+              "r": false,
+              "sh": "Display tone of the verdict: ok, mid, warn or bad.",
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "dataset",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /data/shelves.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/data/shelves.json",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "shelves.json"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.rows`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "index_stat": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "by_family": {
+              "a": true,
+              "h": "By Family",
+              "n": "by_family",
+              "r": false,
+              "sh": "Platform count keyed by family.",
+              "t": "`$OBJECT`"
+            },
+            "by_gate": {
+              "a": true,
+              "h": "By Gate",
+              "n": "by_gate",
+              "r": false,
+              "sh": "Platform count keyed by gate code.",
+              "t": "`$OBJECT`"
+            },
+            "note": {
+              "a": true,
+              "h": "Note",
+              "n": "note",
+              "r": false,
+              "sh": "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof.",
+              "t": "`$STRING`"
+            },
+            "shelves": {
+              "a": true,
+              "h": "Shelves",
+              "n": "shelves",
+              "r": true,
+              "sh": "Number of platforms in the index.",
+              "t": "`$INTEGER`"
+            }
+          },
+          "name": "index_stat",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/stats",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/stats",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "stats"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "lab": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "before": {
+              "a": true,
+              "h": "Before",
+              "n": "before",
+              "r": false,
+              "sh": "Earlier attempts and their verdicts.",
+              "t": "`$ARRAY`"
+            },
+            "experiments": {
+              "a": true,
+              "h": "Experiments",
+              "n": "experiments",
+              "r": false,
+              "sh": "Pre-registered experiments.",
+              "t": "`$ARRAY`"
+            },
+            "updated": {
+              "a": true,
+              "fo": "date",
+              "h": "Updated",
+              "n": "updated",
+              "r": false,
+              "sh": "Ledger update date (YYYY-MM-DD).",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "lab",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /data/lab.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/data/lab.json",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "lab.json"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "shelf": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "agent_can_register": {
+              "a": true,
+              "h": "Agent Can Register",
+              "n": "agent_can_register",
+              "r": true,
+              "sh": "Verdict on whether an AI agent can register.",
+              "t": "`$STRING`"
+            },
+            "agent_reports": {
+              "a": true,
+              "h": "Agent Reports",
+              "n": "agent_reports",
+              "r": false,
+              "sh": "Agent-reported outcomes (unverified, shown next to the measurement).",
+              "t": "`$OBJECT`"
+            },
+            "answer": {
+              "a": true,
+              "h": "Answer",
+              "n": "answer",
+              "r": false,
+              "sh": "Plain-English answer.",
+              "t": "`$STRING`"
+            },
+            "checked_at": {
+              "a": true,
+              "fo": "date",
+              "h": "Checked At",
+              "n": "checked_at",
+              "r": false,
+              "sh": "Date of the census check (YYYY-MM-DD).",
+              "t": "`$STRING`"
+            },
+            "error": {
+              "a": true,
+              "h": "Error",
+              "n": "error",
+              "r": false,
+              "sh": "Census error for this platform; null in every probed record (type unverified).",
+              "t": "`$STRING`"
+            },
+            "family": {
+              "a": true,
+              "h": "Family",
+              "n": "family",
+              "r": true,
+              "sh": "Platform family.",
+              "t": "`$STRING`"
+            },
+            "family_title": {
+              "a": true,
+              "h": "Family Title",
+              "n": "family_title",
+              "r": false,
+              "sh": "Human-readable family title.",
+              "t": "`$STRING`"
+            },
+            "final_url": {
+              "a": true,
+              "h": "Final Url",
+              "n": "final_url",
+              "r": false,
+              "sh": "URL reached after redirects; null when unreachable.",
+              "t": "`$STRING`"
+            },
+            "fingerprint": {
+              "a": true,
+              "h": "Fingerprint",
+              "n": "fingerprint",
+              "r": false,
+              "sh": "Browser fingerprint used on a re-check.",
+              "t": "`$STRING`"
+            },
+            "first_pass_gate": {
+              "a": true,
+              "h": "First Pass Gate",
+              "n": "first_pass_gate",
+              "r": false,
+              "sh": "Gate measured on the first pass, before a re-check.",
+              "t": "`$STRING`"
+            },
+            "front_door": {
+              "a": true,
+              "h": "Front Door",
+              "n": "front_door",
+              "r": false,
+              "sh": "What the census saw on the sign-up page.",
+              "t": "`$OBJECT`"
+            },
+            "gate": {
+              "a": true,
+              "h": "Gate",
+              "n": "gate",
+              "r": true,
+              "sh": "Measured sign-up gate code, e.g.",
+              "t": "`$STRING`"
+            },
+            "gate_label": {
+              "a": true,
+              "h": "Gate Label",
+              "n": "gate_label",
+              "r": false,
+              "sh": "Human-readable gate description.",
+              "t": "`$STRING`"
+            },
+            "http_status": {
+              "a": true,
+              "h": "Http Status",
+              "n": "http_status",
+              "r": false,
+              "sh": "HTTP status of the sign-up page; null when unreachable.",
+              "t": "`$INTEGER`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Platform (shelf) id, e.g.",
+              "t": "`$STRING`"
+            },
+            "manual": {
+              "a": true,
+              "h": "Manual",
+              "n": "manual",
+              "r": false,
+              "sh": "Manual override note.",
+              "t": "`$OBJECT`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Platform name.",
+              "t": "`$STRING`"
+            },
+            "note": {
+              "a": true,
+              "h": "Note",
+              "n": "note",
+              "r": false,
+              "sh": "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof.",
+              "t": "`$STRING`"
+            },
+            "page": {
+              "a": true,
+              "h": "Page",
+              "n": "page",
+              "r": false,
+              "sh": "Site path of the platform page, e.g.",
+              "t": "`$STRING`"
+            },
+            "page_title": {
+              "a": true,
+              "h": "Page Title",
+              "n": "page_title",
+              "r": false,
+              "sh": "Title of the sign-up page; null when unreachable.",
+              "t": "`$STRING`"
+            },
+            "question": {
+              "a": true,
+              "h": "Question",
+              "n": "question",
+              "r": false,
+              "sh": "The question answered, e.g.",
+              "t": "`$STRING`"
+            },
+            "reese_account": {
+              "a": true,
+              "h": "Reese Account",
+              "n": "reese_account",
+              "r": false,
+              "sh": "Present when the measuring agent (Reese) holds an account on the platform.",
+              "t": "`$OBJECT`"
+            },
+            "research": {
+              "a": true,
+              "h": "Research",
+              "n": "research",
+              "r": false,
+              "sh": "Desk research on the platform's AI policy.",
+              "t": "`$OBJECT`"
+            },
+            "rules_mentions": {
+              "a": true,
+              "h": "Rules Mentions",
+              "n": "rules_mentions",
+              "r": false,
+              "sh": "Flags found in the platform's rules pages.",
+              "t": "`$OBJECT`"
+            },
+            "rules_pages": {
+              "a": true,
+              "h": "Rules Pages",
+              "n": "rules_pages",
+              "r": false,
+              "sh": "Rules/terms page URLs that were read.",
+              "t": "`$ARRAY`"
+            },
+            "rules_quotes": {
+              "a": true,
+              "h": "Rules Quotes",
+              "n": "rules_quotes",
+              "r": false,
+              "sh": "Quotes supporting the rules flags.",
+              "t": "`$ARRAY`"
+            },
+            "signup_url": {
+              "a": true,
+              "h": "Signup Url",
+              "n": "signup_url",
+              "r": false,
+              "sh": "Sign-up URL that was tested.",
+              "t": "`$STRING`"
+            },
+            "stepped": {
+              "a": true,
+              "h": "Stepped",
+              "n": "stepped",
+              "r": false,
+              "sh": "Button labels the census clicked through to reach the form; null when none.",
+              "t": "`$ARRAY`"
+            },
+            "tone": {
+              "a": true,
+              "h": "Tone",
+              "n": "tone",
+              "r": false,
+              "sh": "Display tone of the verdict: ok, mid, warn or bad.",
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "shelf",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/shelves",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "yes_candidate",
+                        "k": "query",
+                        "n": "agent_can_register",
+                        "or": "agent_can_register",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "packages",
+                        "k": "query",
+                        "n": "family",
+                        "or": "family",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/shelves",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "shelves"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.shelves`"
+                  }
+                }
+              ]
+            },
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/shelves/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "pypi",
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/shelves/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "shelves"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "traffic": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "ai_paths": {
+              "a": true,
+              "h": "Ai Paths",
+              "n": "ai_paths",
+              "r": false,
+              "sh": "Paths most requested by AI crawlers.",
+              "t": "`$ARRAY`"
+            },
+            "crawler_tokens": {
+              "a": true,
+              "h": "Crawler Tokens",
+              "n": "crawler_tokens",
+              "r": false,
+              "sh": "Most frequent crawler tokens.",
+              "t": "`$ARRAY`"
+            },
+            "daily": {
+              "a": true,
+              "h": "Daily",
+              "n": "daily",
+              "r": true,
+              "sh": "Per-day counts.",
+              "t": "`$ARRAY`"
+            },
+            "distinct_mcp_or_report_callers": {
+              "a": true,
+              "h": "Distinct Mcp Or Report Callers",
+              "n": "distinct_mcp_or_report_callers",
+              "r": false,
+              "sh": "Distinct callers of MCP or the report endpoint.",
+              "t": "`$INTEGER`"
+            },
+            "human_referrers": {
+              "a": true,
+              "h": "Human Referrers",
+              "n": "human_referrers",
+              "r": false,
+              "sh": "Top human referrers.",
+              "t": "`$ARRAY`"
+            },
+            "human_src_tags": {
+              "a": true,
+              "h": "Human Src Tags",
+              "n": "human_src_tags",
+              "r": false,
+              "sh": "Top ?src= tags on human visits.",
+              "t": "`$ARRAY`"
+            },
+            "mcp_clients": {
+              "a": true,
+              "h": "Mcp Clients",
+              "n": "mcp_clients",
+              "r": false,
+              "sh": "MCP clients seen.",
+              "t": "`$ARRAY`"
+            },
+            "note": {
+              "a": true,
+              "h": "Note",
+              "n": "note",
+              "r": false,
+              "sh": "Explains the traffic classes (human, bot, search, ai, self).",
+              "t": "`$STRING`"
+            },
+            "since": {
+              "a": true,
+              "fo": "date",
+              "h": "Since",
+              "n": "since",
+              "r": true,
+              "sh": "First day covered (YYYY-MM-DD).",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "traffic",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/traffic",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": 14,
+                        "k": "query",
+                        "n": "day",
+                        "or": "days",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/traffic",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "traffic"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Client-side rate limiting via a token bucket",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Rate limiting",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Automatic retry of transient failures with exponential backoff",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Retry",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "test": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
+          },
+          "description": "In-memory mock transport for testing without a live server",
+          "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
+              "await": false
+            }
+          },
+          "name": "test",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Test transport",
+          "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Per-request timeout with transport abort",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Timeout",
+          "transport": "wrap",
+          "version": "0.0.1"
+        }
+      },
+      "flow": {
+        "BasicDatasetFlow": {
+          "active": true,
+          "entity": "dataset",
+          "key$": "BasicDatasetFlow",
+          "kind": "basic",
+          "name": "BasicDatasetFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "dataset_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicIndexStatFlow": {
+          "active": true,
+          "entity": "index_stat",
+          "key$": "BasicIndexStatFlow",
+          "kind": "basic",
+          "name": "BasicIndexStatFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "index_stat_ref01",
+                "srcdatavar": "index_stat_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-index_stat_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicLabFlow": {
+          "active": true,
+          "entity": "lab",
+          "key$": "BasicLabFlow",
+          "kind": "basic",
+          "name": "BasicLabFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "lab_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicShelfFlow": {
+          "active": true,
+          "entity": "shelf",
+          "key$": "BasicShelfFlow",
+          "kind": "basic",
+          "name": "BasicShelfFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "shelf_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "shelf_ref01",
+                "srcdatavar": "shelf_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "shelf01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-shelf_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicTrafficFlow": {
+          "active": true,
+          "entity": "traffic",
+          "key$": "BasicTrafficFlow",
+          "kind": "basic",
+          "name": "BasicTrafficFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "traffic_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "info": {
+        "auth": false,
+        "contact": {
+          "url": "https://agentaccess.lastminutedealshq.com/docs"
+        },
+        "description": "Agent Access Index (agentaccess.lastminutedealshq.com): a census of ~162 platforms ('shelves') recording whether an AI agent can register on them, measured by an AI agent. Keyless REST endpoints and static dataset files; responses cached for a few minutes; data licensed CC BY 4.0. Built from https://agentaccess.lastminutedealshq.com/docs and live probes on 2026-10-23. Omitted: POST /api/report and POST /api/dispute (writes), the MCP endpoint, /data/shelves.csv, /feed.xml and /llms.txt. Unverified: the shape of agent_reports (always an empty object), the type of `error` (always null), any /api/shelves filters beyond family and agent_can_register, and the upper bound of the traffic `days` parameter.",
+        "license": {
+          "name": "CC BY 4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        },
+        "meta_source": "https://www.freepublicapis.com",
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://agentaccess.lastminutedealshq.com"
+          }
+        ],
+        "summary": "Agent Access Index (agentaccess.lastminutedealshq.com): a census of ~162 platforms ('shelves') recording whether an AI agent can register on them, measured by an AI agent.",
+        "title": "Agent Access Index API",
+        "version": "1.0.0",
+        "website": "https://agentaccess.lastminutedealshq.com"
+      },
+      "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "in": "",
+          "name": "",
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
+      "phase": {
+        "build": {
+          "active": true
+        },
+        "top": {
+          "active": true
+        }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
+      },
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
+      "target": {
+        "go": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "go",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "go-cli",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "phase": {
+            "agentguide": {
+              "active": false
+            },
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "provides": {},
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "root"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [],
+          "title": "Go CLI"
+        },
+        "go-mcp": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "go-mcp",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "phase": {
+            "agentguide": {
+              "active": false
+            },
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "provides": {},
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "root"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [],
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
+        },
+        "lua": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "--"
+          },
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "kind": "prod",
+              "version": "2.5"
+            }
+          },
+          "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "lua",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "luarocks",
+              "package": "",
+              "state": "pending",
+              "url": "https://luarocks.org",
+              "vault": {
+                "alias": "luarocks",
+                "env": "LUAROCKS_API_KEY",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
+          "title": "Lua"
+        },
+        "php": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "php",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "packagist",
+              "package": "",
+              "state": "pending",
+              "url": "https://packagist.org",
+              "vault": {
+                "alias": "packagist",
+                "env": "PACKAGIST_API_TOKEN",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
+          "title": "PHP"
+        },
+        "py": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "#"
+          },
+          "deps": {
+            "requests": {
+              "active": true,
+              "kind": "prod",
+              "version": "2.33"
+            }
+          },
+          "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "py",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "pypi",
+              "package": "",
+              "state": "pending",
+              "url": "https://pypi.org",
+              "vault": {
+                "alias": "pypi",
+                "env": "",
+                "recipe": "pypi"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "#"
+          },
+          "deps": {
+            "json": {
+              "active": true,
+              "kind": "prod",
+              "version": "*"
+            }
+          },
+          "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "rb",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "rubygems",
+              "package": "",
+              "state": "pending",
+              "url": "https://rubygems.org",
+              "vault": {
+                "alias": "gem",
+                "env": "",
+                "recipe": "gem"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "agent-access-index",
+            "package": "",
+            "path": ""
+          },
+          "name": "ts",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "npm",
+              "package": "",
+              "state": "pending",
+              "url": "https://registry.npmjs.org",
+              "vault": {
+                "alias": "npm",
+                "env": "",
+                "recipe": "npm"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
+          "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": true
+        }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
+      }
+    }
+  },
+  "name": "agent-access-index",
+  "origin": "voxgig-sdk"
+}

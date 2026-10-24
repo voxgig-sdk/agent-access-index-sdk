@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "lab": {
+      "LAB00": {
+        "before": [],
+        "experiments": [],
+        "updated": "s20"
+      },
+      "LAB01": {
+        "before": [],
+        "experiments": [],
+        "updated": "s3e"
+      },
+      "LAB02": {
+        "before": [],
+        "experiments": [],
+        "updated": "s5c"
+      }
+    }
+  },
+  "new": {
+    "lab": {
+      "lab_ref01": {
+        "before": [],
+        "experiments": [],
+        "updated": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /data/lab.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+# Entity: lab
+
+main: kit: entity: lab: {
+
+  alias: field: {}
+
+  fields: {
+    before: {
+      h: "Before"
+      n: "before"
+      r: false
+      sh: "Earlier attempts and their verdicts."
+      t: "`$ARRAY`"
+    }
+    experiments: {
+      h: "Experiments"
+      n: "experiments"
+      r: false
+      sh: "Pre-registered experiments."
+      t: "`$ARRAY`"
+    }
+    updated: {
+      fo: "date"
+      h: "Updated"
+      n: "updated"
+      r: false
+      sh: "Ledger update date (YYYY-MM-DD)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "lab"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /data/lab.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/data/lab.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "lab.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

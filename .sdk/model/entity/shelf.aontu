@@ -1,0 +1,325 @@
+# Entity: shelf
+
+main: kit: entity: shelf: {
+
+  alias: field: {}
+
+  fields: {
+    agent_can_register: {
+      h: "Agent Can Register"
+      n: "agent_can_register"
+      r: true
+      sh: "Verdict on whether an AI agent can register."
+      t: "`$STRING`"
+    }
+    agent_reports: {
+      h: "Agent Reports"
+      n: "agent_reports"
+      r: false
+      sh: "Agent-reported outcomes (unverified, shown next to the measurement)."
+      t: "`$OBJECT`"
+    }
+    answer: {
+      h: "Answer"
+      n: "answer"
+      r: false
+      sh: "Plain-English answer."
+      t: "`$STRING`"
+    }
+    checked_at: {
+      fo: "date"
+      h: "Checked At"
+      n: "checked_at"
+      r: false
+      sh: "Date of the census check (YYYY-MM-DD)."
+      t: "`$STRING`"
+    }
+    error: {
+      h: "Error"
+      n: "error"
+      r: false
+      sh: "Census error for this platform; null in every probed record (type unverified)."
+      t: "`$STRING`"
+    }
+    family: {
+      h: "Family"
+      n: "family"
+      r: true
+      sh: "Platform family."
+      t: "`$STRING`"
+    }
+    family_title: {
+      h: "Family Title"
+      n: "family_title"
+      r: false
+      sh: "Human-readable family title."
+      t: "`$STRING`"
+    }
+    final_url: {
+      h: "Final Url"
+      n: "final_url"
+      r: false
+      sh: "URL reached after redirects; null when unreachable."
+      t: "`$STRING`"
+    }
+    fingerprint: {
+      h: "Fingerprint"
+      n: "fingerprint"
+      r: false
+      sh: "Browser fingerprint used on a re-check."
+      t: "`$STRING`"
+    }
+    first_pass_gate: {
+      h: "First Pass Gate"
+      n: "first_pass_gate"
+      r: false
+      sh: "Gate measured on the first pass, before a re-check."
+      t: "`$STRING`"
+    }
+    front_door: {
+      h: "Front Door"
+      n: "front_door"
+      r: false
+      sh: "What the census saw on the sign-up page."
+      t: "`$OBJECT`"
+    }
+    gate: {
+      h: "Gate"
+      n: "gate"
+      r: true
+      sh: "Measured sign-up gate code, e.g."
+      t: "`$STRING`"
+    }
+    gate_label: {
+      h: "Gate Label"
+      n: "gate_label"
+      r: false
+      sh: "Human-readable gate description."
+      t: "`$STRING`"
+    }
+    http_status: {
+      h: "Http Status"
+      n: "http_status"
+      r: false
+      sh: "HTTP status of the sign-up page; null when unreachable."
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Platform (shelf) id, e.g."
+      t: "`$STRING`"
+    }
+    manual: {
+      h: "Manual"
+      n: "manual"
+      r: false
+      sh: "Manual override note."
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Platform name."
+      t: "`$STRING`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: false
+      sh: "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof."
+      t: "`$STRING`"
+    }
+    page: {
+      h: "Page"
+      n: "page"
+      r: false
+      sh: "Site path of the platform page, e.g."
+      t: "`$STRING`"
+    }
+    page_title: {
+      h: "Page Title"
+      n: "page_title"
+      r: false
+      sh: "Title of the sign-up page; null when unreachable."
+      t: "`$STRING`"
+    }
+    question: {
+      h: "Question"
+      n: "question"
+      r: false
+      sh: "The question answered, e.g."
+      t: "`$STRING`"
+    }
+    reese_account: {
+      h: "Reese Account"
+      n: "reese_account"
+      r: false
+      sh: "Present when the measuring agent (Reese) holds an account on the platform."
+      t: "`$OBJECT`"
+    }
+    research: {
+      h: "Research"
+      n: "research"
+      r: false
+      sh: "Desk research on the platform's AI policy."
+      t: "`$OBJECT`"
+    }
+    rules_mentions: {
+      h: "Rules Mentions"
+      n: "rules_mentions"
+      r: false
+      sh: "Flags found in the platform's rules pages."
+      t: "`$OBJECT`"
+    }
+    rules_pages: {
+      h: "Rules Pages"
+      n: "rules_pages"
+      r: false
+      sh: "Rules/terms page URLs that were read."
+      t: "`$ARRAY`"
+    }
+    rules_quotes: {
+      h: "Rules Quotes"
+      n: "rules_quotes"
+      r: false
+      sh: "Quotes supporting the rules flags."
+      t: "`$ARRAY`"
+    }
+    signup_url: {
+      h: "Signup Url"
+      n: "signup_url"
+      r: false
+      sh: "Sign-up URL that was tested."
+      t: "`$STRING`"
+    }
+    stepped: {
+      h: "Stepped"
+      n: "stepped"
+      r: false
+      sh: "Button labels the census clicked through to reach the form; null when none."
+      t: "`$ARRAY`"
+    }
+    tone: {
+      h: "Tone"
+      n: "tone"
+      r: false
+      sh: "Display tone of the verdict: ok, mid, warn or bad."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "shelf"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/shelves"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "yes_candidate"
+                k: "query"
+                n: "agent_can_register"
+                or: "agent_can_register"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "packages"
+                k: "query"
+                n: "family"
+                or: "family"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/shelves"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "shelves"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.shelves`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/shelves/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "pypi"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/shelves/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "shelves"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

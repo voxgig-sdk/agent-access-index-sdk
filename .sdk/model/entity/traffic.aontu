@@ -1,0 +1,122 @@
+# Entity: traffic
+
+main: kit: entity: traffic: {
+
+  alias: field: {}
+
+  fields: {
+    ai_paths: {
+      h: "Ai Paths"
+      n: "ai_paths"
+      r: false
+      sh: "Paths most requested by AI crawlers."
+      t: "`$ARRAY`"
+    }
+    crawler_tokens: {
+      h: "Crawler Tokens"
+      n: "crawler_tokens"
+      r: false
+      sh: "Most frequent crawler tokens."
+      t: "`$ARRAY`"
+    }
+    daily: {
+      h: "Daily"
+      n: "daily"
+      r: true
+      sh: "Per-day counts."
+      t: "`$ARRAY`"
+    }
+    distinct_mcp_or_report_callers: {
+      h: "Distinct Mcp Or Report Callers"
+      n: "distinct_mcp_or_report_callers"
+      r: false
+      sh: "Distinct callers of MCP or the report endpoint."
+      t: "`$INTEGER`"
+    }
+    human_referrers: {
+      h: "Human Referrers"
+      n: "human_referrers"
+      r: false
+      sh: "Top human referrers."
+      t: "`$ARRAY`"
+    }
+    human_src_tags: {
+      h: "Human Src Tags"
+      n: "human_src_tags"
+      r: false
+      sh: "Top ?src= tags on human visits."
+      t: "`$ARRAY`"
+    }
+    mcp_clients: {
+      h: "Mcp Clients"
+      n: "mcp_clients"
+      r: false
+      sh: "MCP clients seen."
+      t: "`$ARRAY`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: false
+      sh: "Explains the traffic classes (human, bot, search, ai, self)."
+      t: "`$STRING`"
+    }
+    since: {
+      fo: "date"
+      h: "Since"
+      n: "since"
+      r: true
+      sh: "First day covered (YYYY-MM-DD)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "traffic"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/traffic"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 14
+                k: "query"
+                n: "day"
+                or: "days"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/traffic"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "traffic"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,36 @@
+{
+  "files": [
+    "SUMMARY.md"
+  ],
+  "config": ".sdk/doc/qa/vale.ini",
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Agent Access Index (`agentaccess.lastminutedealshq.com`): a census of ~162 platforms (&#39;shelves&#39;) recording whether an AI agent can register on them, measured by an AI agent. Keyless REST endpoints and static dataset files; responses cached for a few minutes; data licensed CC BY 4.0. Built from https://agentaccess.lastminutedealshq.com/docs and live probes on 2026-10-23. Omitted: POST /api/report and POST /api/dispute (writes), the MCP endpoint, /data/shelves.csv, /feed.xml and /llms.txt. Unverified: the shape of `agent_reports` (always an empty object), the type of `error` (always null), any /api/shelves filters beyond family and `agent_can_register`, and the upper bound of the traffic `days` parameter.",
+      "Agent-reported outcomes (unverified, shown next to the measurement). Every probed record returned an empty object, so the shape is unverified. Single-shelf responses only.",
+      "Caveat: measured by an AI agent; a form with no CAPTCHA before submit is a candidate door, not proof.",
+      "Census error for this platform; null in every probed record (type unverified).",
+      "Date of the census check (YYYY-MM-DD).",
+      "Distinct callers of MCP or the report endpoint.",
+      "Earlier attempts and their verdicts.",
+      "Ledger update date (YYYY-MM-DD).",
+      "Most frequent crawler tokens.",
+      "Number of platforms in the index.",
+      "Paths most requested by AI crawlers.",
+      "Per-day counts.",
+      "Plain-English answer. Not in list items.",
+      "Platform count keyed by family.",
+      "Platform count keyed by gate code.",
+      "Pre-registered experiments.",
+      "Production server",
+      "The dataset",
+      "The experiment ledger",
+      "The index statistics",
+      "The matching platforms",
+      "The platform record",
+      "The traffic report",
+      "Top human referrers.",
+      "Verdict on whether an AI agent can register."
+    ]
+  }
+}
